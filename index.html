@@ -1,0 +1,1225 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aquara — Purity in Motion</title>
+  <meta name="description" content="Aquara Portable Water Filtration Bottle — vacuum insulated + UF filtration for modern explorers." />
+
+  <style>
+    :root{
+      --bg:#07121a;
+      --panel:#0b1c27;
+      --panel2:#0f2634;
+      --text:#eaf4ff;
+      --muted:#b7c7d8;
+      --brand:#4cc9f0;
+      --brand2:#2b87ff;
+      --line:rgba(255,255,255,.12);
+      --ok:#6ee7b7;
+      --warn:#fbbf24;
+      --danger:#fb7185;
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(76,201,240,.22), transparent 60%),
+                  radial-gradient(900px 600px at 95% 0%, rgba(43,135,255,.16), transparent 55%),
+                  radial-gradient(900px 650px at 50% 120%, rgba(76,201,240,.12), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      font-family:var(--font);
+      line-height:1.5;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    button, input, select{font:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Top promo bar */
+    .promo{
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(90deg, rgba(76,201,240,.18), rgba(43,135,255,.18));
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .promo-inner{
+      display:flex; gap:12px; align-items:center; justify-content:center;
+      padding:10px 0;
+      font-size:14px;
+      color:var(--text);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+    }
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--ok)}
+    .promo strong{font-weight:700}
+    .promo a{text-decoration:underline; opacity:.95}
+    .promo .count{font-variant-numeric: tabular-nums}
+
+    /* Header */
+    header{
+      position:sticky; top:42px; z-index:40;
+      backdrop-filter: blur(14px);
+      background:rgba(7,18,26,.58);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand img{width:34px; height:34px}
+    .brand span{font-size:18px}
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; gap:18px; align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+    nav a{padding:8px 10px; border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav-actions{
+      display:flex; align-items:center; gap:10px;
+    }
+    .icon-btn{
+      width:40px; height:40px; border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      display:grid; place-items:center;
+      cursor:pointer;
+    }
+    .icon-btn:hover{background:rgba(255,255,255,.10)}
+    .cart-badge{
+      position:relative;
+    }
+    .cart-badge::after{
+      content: attr(data-count);
+      position:absolute;
+      top:-7px; right:-7px;
+      min-width:18px; height:18px;
+      padding:0 5px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--brand), var(--brand2));
+      color:#061018;
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.35);
+    }
+    .cart-badge[data-count="0"]::after{display:none}
+
+    /* Hero */
+    .hero{
+      padding:54px 0 30px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:26px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:52ch;
+    }
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin:18px 0 6px;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:12px 14px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:700;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{background:rgba(255,255,255,.10)}
+    .btn.primary{
+      border:none;
+      background:linear-gradient(90deg, var(--brand), var(--brand2));
+      color:#061018;
+    }
+    .btn.primary:hover{filter:brightness(1.03)}
+    .hero-cards{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:10px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.18);
+    }
+    .mini b{display:block; font-size:14px; margin-bottom:4px}
+    .mini span{color:var(--muted); font-size:13px}
+
+    .hero-media{
+      border-radius:var(--radius2);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding:16px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-media .frame{
+      border-radius:18px;
+      background:rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      padding:16px;
+      display:grid;
+      place-items:center;
+      min-height: 360px;
+    }
+    .hero-media .note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex; gap:10px; align-items:flex-start;
+    }
+
+    /* Sections */
+    section{padding:46px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
+      margin-bottom:18px;
+    }
+    h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.2px;
+    }
+    .sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      max-width:70ch;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+
+    /* Shop */
+    .shop-wrap{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:16px;
+      align-items:start;
+    }
+    .product{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:var(--radius2);
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .product-top{
+      display:grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap:16px;
+    }
+    .product-img{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.25);
+      padding:12px;
+      display:grid; place-items:center;
+      min-height:320px;
+    }
+    .product-meta h3{
+      margin:0 0 6px;
+      font-size:18px;
+    }
+    .price{
+      display:flex; align-items:baseline; gap:10px; margin:10px 0 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .price .now{font-size:24px; font-weight:900}
+    .price .was{color:var(--muted); text-decoration:line-through; font-size:14px}
+    .chiprow{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0}
+    .chip{
+      padding:6px 10px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .opt{
+      margin:12px 0;
+      display:grid; gap:8px;
+    }
+    .opt label{font-size:13px; color:var(--muted)}
+    select, input[type="number"], input[type="email"]{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      outline:none;
+    }
+    select:focus, input:focus{border-color:rgba(76,201,240,.5)}
+    .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+
+    .small{
+      font-size:12px; color:var(--muted);
+      margin:10px 0 0;
+    }
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .side{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:var(--radius2);
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .side h3{margin:0 0 10px; font-size:16px}
+    .list{
+      display:grid; gap:10px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .list b{color:var(--text)}
+    .hr{height:1px; background:var(--line); margin:14px 0}
+    .toggle{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      border-radius:14px;
+    }
+    .toggle input{transform:scale(1.2)}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(110,231,183,.15);
+      border:1px solid rgba(110,231,183,.35);
+      color:var(--ok);
+      display:inline-flex;
+      gap:6px; align-items:center;
+    }
+
+    /* How it works / Tech */
+    .twocol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .note-box{
+      border:1px dashed rgba(255,255,255,.25);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius);
+      padding:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .danger{color:var(--danger)}
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 40px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap:14px;
+    }
+    .footer-grid h4{margin:0 0 10px; color:var(--text)}
+    .footer-grid a{display:block; padding:6px 0}
+    .footer-grid a:hover{color:var(--text)}
+    .legal{margin-top:16px; font-size:12px}
+
+    /* Modal Cart */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      place-items:center;
+      background:rgba(0,0,0,.55);
+      z-index:100;
+      padding:16px;
+    }
+    .modal.open{display:grid}
+    .modal-card{
+      width:min(760px, 100%);
+      border:1px solid var(--line);
+      background:rgba(10,22,32,.92);
+      border-radius:22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modal-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .modal-head h3{margin:0; font-size:16px}
+    .modal-body{padding:14px 16px}
+    .cart-items{display:grid; gap:10px}
+    .cart-item{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:12px;
+      color:var(--muted);
+    }
+    .cart-item b{color:var(--text)}
+    .qty{
+      display:flex; gap:6px; align-items:center; justify-content:flex-end;
+    }
+    .qty button{
+      width:34px; height:34px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+    }
+    .qty span{min-width:26px; text-align:center; color:var(--text); font-weight:800}
+    .summary{
+      margin-top:12px;
+      border-top:1px solid var(--line);
+      padding-top:12px;
+      display:grid; gap:8px;
+      color:var(--muted);
+    }
+    .summary-row{
+      display:flex; justify-content:space-between; gap:12px;
+    }
+    .summary-row b{color:var(--text)}
+    .checkout{
+      display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .product-top{grid-template-columns:1fr}
+      .shop-wrap{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .twocol{grid-template-columns:1fr}
+      .hero h1{font-size:38px}
+      nav ul{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top promo bar -->
+  <div class="promo">
+    <div class="container promo-inner">
+      <span class="pill"><span class="dot"></span><strong>Early Explorer Launch:</strong> 15% OFF first 500 units</span>
+      <span class="pill">Free shipping over <strong>SGD 120</strong></span>
+      <span class="pill">Ends in <span class="count" id="countdown">--:--:--</span></span>
+      <a href="#shop">Shop now</a>
+    </div>
+  </div>
+  
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Aquara Home">
+        <!-- Put your logo file next to this HTML and rename to aquara-logo.png OR keep as-is -->
+        <img src="Aquara Company Logo.png" alt="Aquara logo" />
+        <span>Aquara</span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#tech">Technology</a></li>
+          <li><a href="#subscription">Subscription</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" title="Search (demo)" aria-label="Search">
+          <!-- magnifier -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2"/>
+            <path d="m21 21-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <button class="icon-btn cart-badge" id="cartBtn" data-count="0" title="Cart" aria-label="Cart">
+          <!-- cart -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6h15l-2 9H7L6 6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M6 6 5 3H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Purity in Motion.</h1>
+        <p>
+          Aquara is a vacuum-insulated stainless steel bottle with a removable <b>0.1-micron UF filter cartridge</b>,
+          designed for modern explorers—hot coffee in the morning, safer refills outdoors in the afternoon.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#shop">Shop Aquara</a>
+          <a class="btn" href="#how">How it works</a>
+          <a class="btn" href="#subscription">Filter subscription</a>
+        </div>
+
+        <div class="hero-cards">
+          <div class="mini">
+            <b>Vacuum Insulated</b>
+            <span>Thermal retention for everyday + outdoor use.</span>
+          </div>
+          <div class="mini">
+            <b>0.1 μm UF Filtration</b>
+            <span>Targets bacteria, parasites & sediments (microbial level).</span>
+          </div>
+          <div class="mini">
+            <b>Razor-and-Blade Model</b>
+            <span>Replaceable cartridges for long-term convenience.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="frame">
+          <!-- Put your product mockup next to this HTML and rename to aquara_product_sample_design.png -->
+          <img src="aquara_product_sample_design.png" alt="Aquara bottle sample design (mockup)" />
+        </div>
+        <div class="note">
+          <span class="tag">Demo mockup</span>
+          <span>
+            Tip: Place your images in the same folder as this HTML (logo + product mockup) for them to display.
+          </span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Product Demo Video Section -->
+  <section id="demo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Product Demo</h2>
+            <p class="sub">
+              See how to set up Aquara Filter Bottle — Using LifeStraw Go Series Video as references
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div style="position:relative; padding-top:56.25%;">
+            <iframe
+              src="https://www.youtube.com/embed/6SKQ04SJCak?autoplay=1&mute=1&loop=1&playlist=6SKQ04SJCak"
+              title="Aquara Product Demo"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              style="position:absolute; top:0; left:0; width:100%; height:100%;">
+            </iframe>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Benefits -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Built for the wild. Styled for daily life.</h2>
+          <p class="sub">A balanced mid-premium solution between basic city filters and high-end press purifiers.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Leak-resistant & durable</h3>
+          <p>Stainless steel build for outdoor handling with a modular cap system for quick filter swap.</p>
+        </div>
+        <div class="card">
+          <h3>Simple, no-power filtration</h3>
+          <p>UF cartridge supports practical outdoor hydration without complex pumping systems.</p>
+        </div>
+        <div class="card">
+          <h3>Sustainability-first</h3>
+          <p>Reusable bottle design to reduce single-use plastics, plus filter bundles and reminders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section id="shop">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Shop Aquara</h2>
+          <p class="sub">Choose capacity, colour, and bundle. Add subscription to never run out of cartridges.</p>
+        </div>
+      </div>
+
+      <div class="shop-wrap">
+        <div class="product">
+          <div class="product-top">
+            <div class="product-img">
+              <img src="aquara_product_sample_design.png" alt="Aquara bottle product" />
+            </div>
+
+            <div class="product-meta">
+              <h3>Aquara Portable Water Filtration Bottle</h3>
+              <div class="chiprow">
+                <span class="chip">Vacuum insulated</span>
+                <span class="chip">304 stainless steel</span>
+                <span class="chip">0.1 μm UF cartridge</span>
+              </div>
+
+              <div class="price">
+                <span class="now" id="priceNow">$75</span>
+                <span class="was" id="priceWas">$88</span>
+              </div>
+
+              <div class="row2">
+                <div class="opt">
+                  <label for="capacity">Capacity</label>
+                  <select id="capacity">
+                    <option value="24oz" data-mult="1.00">24oz (Everyday Explorer)</option>
+                    <option value="32oz" data-mult="1.10">32oz (Trail Standard)</option>
+                    <option value="40oz" data-mult="1.20">40oz (Expedition Edition)</option>
+                  </select>
+                </div>
+
+                <div class="opt">
+                  <label for="color">Colour</label>
+                  <select id="color">
+                    <option>Glacier Blue</option>
+                    <option>Forest Green</option>
+                    <option>Midnight Black</option>
+                    <option>Desert Sand</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="opt">
+                <label for="bundle">Bundle</label>
+                <select id="bundle">
+                  <option value="bottle" data-extra="0">Bottle only</option>
+                  <option value="starter" data-extra="1">Bottle + 1 extra filter</option>
+                  <option value="explorer" data-extra="3">Explorer Pack (Bottle + 3 filters)</option>
+                </select>
+              </div>
+
+              <div class="opt">
+                <label for="qty">Quantity</label>
+                <input id="qty" type="number" min="1" value="1" />
+              </div>
+
+              <div class="actions">
+                <button class="btn primary" id="addToCartBtn">Add to cart</button>
+                <button class="btn" id="buyNowBtn">Buy now (demo)</button>
+              </div>
+
+              <p class="small">
+                * Demo site only: checkout is simulated. Replace with real payment (Shopify/Stripe) later.
+              </p>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="twocol">
+            <div class="note-box">
+              <b class="ok">What it helps with</b><br/>
+              Bacteria & parasites (microbial level), sediments/particles, taste/odour improvement (with compatible media layer).
+            </div>
+            <div class="note-box">
+              <b class="warn">Important limitations</b><br/>
+              UF bottles are not RO systems. Do not claim removal of dissolved salts. Always follow safe water guidance.
+            </div>
+          </div>
+        </div>
+
+        <aside class="side">
+          <h3>Filter Cartridges</h3>
+          <div class="list">
+            <div><b>Replacement cartridge</b> — $25 each</div>
+            <div><b>Recommended</b> — replace after your set lifespan (e.g., liters / months)</div>
+            <div><b>Best value</b> — bundles + subscription</div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="toggle" id="subToggle">
+            <div>
+              <b>Enable subscription</b><br/>
+              <span class="small">Auto-ship cartridges & reminders.</span>
+            </div>
+            <input type="checkbox" id="subscribe" />
+          </div>
+
+          <div class="opt" style="margin-top:12px">
+            <label for="subPlan">Subscription plan</label>
+            <select id="subPlan">
+              <option value="3m">Every 3 months</option>
+              <option value="6m">Every 6 months</option>
+              <option value="12m">Every 12 months (save 10%)</option>
+            </select>
+          </div>
+
+          <button class="btn" id="addFilterBtn" style="width:100%; margin-top:6px">
+            Add 1 filter to cart
+          </button>
+
+          <p class="small">
+            Subscription is also a demo here. In a real store, connect this to Shopify Subscriptions / Recharge.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>How it works</h2>
+          <p class="sub">Simple steps for daily use and outdoor refills.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>1) Fill</h3>
+          <p>Fill with treated water (daily) or a natural source (outdoors) based on your use scenario.</p>
+        </div>
+        <div class="card">
+          <h3>2) Filter</h3>
+          <p>Install the UF cartridge in the cap module. Drink through the system as designed.</p>
+        </div>
+        <div class="card">
+          <h3>3) Replace</h3>
+          <p>Swap cartridges on schedule. Bundles and subscriptions reduce hassle (razor-and-blade model).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology -->
+  <section id="tech">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Technology (UF vs RO)</h2>
+          <p class="sub">
+            Aquara uses ultrafiltration (UF) for practical outdoor hydration—high usability without pumps or wastewater.
+          </p>
+        </div>
+      </div>
+
+      <div class="twocol">
+        <div class="card">
+          <h3 class="ok">UF (Ultrafiltration)</h3>
+          <p>
+            UF membranes can help reduce microbes (bacteria/parasites) and suspended solids.
+            They are commonly used in portable filtration because they operate without high pressure or electricity.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="warn">Why not RO in bottles?</h3>
+          <p>
+            Reverse osmosis typically needs high pressure, produces wastewater, and has low flow in handheld form factors.
+            That’s why most portable bottles use UF/MF rather than RO.
+          </p>
+        </div>
+      </div>
+
+      <div class="note-box" style="margin-top:14px">
+        <b>Safety note:</b> Always market claims responsibly and include clear limitations. Real certification/testing is required for commercial launch.
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription -->
+  <section id="subscription">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Filter Subscription</h2>
+          <p class="sub">Never run out of cartridges. Best for frequent hikers and campers.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>3-Month Plan</h3>
+          <p>Frequent use. Includes replacement reminders and bundle pricing.</p>
+          <div class="hr"></div>
+          <button class="btn" onclick="quickAddSub('3m')">Select 3-Month</button>
+        </div>
+        <div class="card">
+          <h3>6-Month Plan</h3>
+          <p>Balanced plan for weekend explorers and occasional trips.</p>
+          <div class="hr"></div>
+          <button class="btn" onclick="quickAddSub('6m')">Select 6-Month</button>
+        </div>
+        <div class="card">
+          <h3>12-Month Plan</h3>
+          <p>Best value (save 10%). Great for building long-term customer value.</p>
+          <div class="hr"></div>
+          <button class="btn primary" onclick="quickAddSub('12m')">Select 12-Month</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>About Aquara</h2>
+          <p class="sub">A modern outdoor hydration brand built around practical safety, durability, and sustainability.</p>
+        </div>
+      </div>
+
+      <div class="twocol">
+        <div class="card">
+          <h3>Vision</h3>
+          <p>To become a trusted outdoor hydration brand enabling safe drinking water anywhere.</p>
+          <div class="hr"></div>
+          <h3>Mission</h3>
+          <p>To deliver durable, practical filtration solutions that combine performance with modern lifestyle functionality.</p>
+        </div>
+
+        <div class="card">
+          <h3>Contact</h3>
+          <p class="sub" style="margin:0 0 10px">Join the Explorer Club for tips, launch drops and filter reminders.</p>
+          <div class="opt">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+          <button class="btn primary" id="joinBtn">Join</button>
+          <p class="small" id="joinMsg" style="margin-top:10px"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <img src="Aquara Company Logo.png" alt="Aquara logo" />
+          <span>Aquara</span>
+        </div>
+        <p style="margin:0; max-width:60ch">
+          Purity in Motion. Vacuum-insulated hydration with practical UF filtration.
+        </p>
+        <div class="legal">
+          © <span id="year"></span> Aquara (Simulation Project). All content is for academic/demo use.
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <a href="#shop">Shop</a>
+        <a href="#how">How it works</a>
+        <a href="#tech">Technology</a>
+        <a href="#subscription">Subscription</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a href="#about">About</a>
+        <a href="#top">Back to top</a>
+        <a href="javascript:void(0)" onclick="openCart()">Cart</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cartModal" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Your Cart</h3>
+        <button class="icon-btn" onclick="closeCart()" aria-label="Close cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <b id="subtotal">$0</b>
+          </div>
+          <div class="summary-row">
+            <span>Estimated shipping</span>
+            <b id="shipping">$0</b>
+          </div>
+          <div class="summary-row">
+            <span>Discount</span>
+            <b id="discount">$0</b>
+          </div>
+          <div class="summary-row" style="font-size:16px">
+            <span>Total</span>
+            <b id="total">$0</b>
+          </div>
+        </div>
+
+        <div class="checkout">
+          <button class="btn" onclick="clearCart()">Clear</button>
+          <button class="btn primary" onclick="demoCheckout()">Checkout (demo)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- CONFIG ----------
+    const BASE_PRICE_BOTTLE = 75;      // USD
+    const FILTER_PRICE = 25;           // USD
+    const EARLY_EXPLORER_DISCOUNT = 0.15; // 15% off bottle line items (demo)
+    const FREE_SHIP_THRESHOLD = 120;   // USD (demo)
+    const SHIPPING_FLAT = 8;           // USD (demo)
+    const SHIPPING_FREE = 0;
+
+    // ---------- STATE ----------
+    let cart = [];
+
+    // ---------- HELPERS ----------
+    const $ = (id) => document.getElementById(id);
+    const money = (v) => `$${v.toFixed(2)}`;
+
+    function setYear(){ $("year").textContent = new Date().getFullYear(); }
+
+    // Promo countdown (demo: 2 hours from page load)
+    const endTime = Date.now() + 2 * 60 * 60 * 1000;
+    function tickCountdown(){
+      const ms = Math.max(0, endTime - Date.now());
+      const s = Math.floor(ms/1000);
+      const hh = String(Math.floor(s/3600)).padStart(2,'0');
+      const mm = String(Math.floor((s%3600)/60)).padStart(2,'0');
+      const ss = String(s%60).padStart(2,'0');
+      $("countdown").textContent = `${hh}:${mm}:${ss}`;
+      if(ms > 0) requestAnimationFrame(tickCountdown);
+    }
+
+    function updateHeaderCartBadge(){
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      $("cartBtn").setAttribute("data-count", String(count));
+    }
+
+    function addItem(item){
+      // Merge if same key
+      const key = item.key;
+      const existing = cart.find(i => i.key === key);
+      if(existing){
+        existing.qty += item.qty;
+      } else {
+        cart.push({...item});
+      }
+      saveCart();
+      renderCart();
+      updateHeaderCartBadge();
+    }
+
+    function removeItem(key){
+      cart = cart.filter(i => i.key !== key);
+      saveCart();
+      renderCart();
+      updateHeaderCartBadge();
+    }
+
+    function changeQty(key, delta){
+      const it = cart.find(i => i.key === key);
+      if(!it) return;
+      it.qty += delta;
+      if(it.qty <= 0) removeItem(key);
+      saveCart();
+      renderCart();
+      updateHeaderCartBadge();
+    }
+
+    function clearCart(){
+      cart = [];
+      saveCart();
+      renderCart();
+      updateHeaderCartBadge();
+    }
+
+    function subtotal(){
+      return cart.reduce((sum, i) => sum + (i.unitPrice * i.qty), 0);
+    }
+
+    function shippingCost(sub){
+      return sub >= FREE_SHIP_THRESHOLD ? SHIPPING_FREE : (sub > 0 ? SHIPPING_FLAT : 0);
+    }
+
+    function discountAmount(){
+      // Demo: apply Early Explorer 15% to bottle line items only
+      // (You can adjust rules later.)
+      let disc = 0;
+      cart.forEach(i => {
+        if(i.type === "bottle"){
+          disc += (i.unitPrice * i.qty) * EARLY_EXPLORER_DISCOUNT;
+        }
+      });
+      return disc;
+    }
+
+    function renderCart(){
+      const wrap = $("cartItems");
+      wrap.innerHTML = "";
+
+      if(cart.length === 0){
+        wrap.innerHTML = `<div class="note-box">Your cart is empty. Add a bottle or filters to get started.</div>`;
+      } else {
+        cart.forEach(i => {
+          const row = document.createElement("div");
+          row.className = "cart-item";
+          row.innerHTML = `
+            <div>
+              <b>${i.title}</b><br/>
+              <span>${i.meta}</span><br/>
+              <span>${money(i.unitPrice)} each</span>
+            </div>
+            <div class="qty">
+              <button aria-label="Decrease" onclick="changeQty('${i.key}', -1)">−</button>
+              <span>${i.qty}</span>
+              <button aria-label="Increase" onclick="changeQty('${i.key}', 1)">+</button>
+              <button aria-label="Remove" onclick="removeItem('${i.key}')" style="margin-left:6px;border-color:rgba(251,113,133,.35);color:var(--danger)">✕</button>
+            </div>
+          `;
+          wrap.appendChild(row);
+        });
+      }
+
+      const sub = subtotal();
+      const ship = shippingCost(sub);
+      const disc = discountAmount();
+      const total = Math.max(0, sub + ship - disc);
+
+      $("subtotal").textContent = money(sub);
+      $("shipping").textContent = money(ship);
+      $("discount").textContent = `- ${money(disc)}`;
+      $("total").textContent = money(total);
+    }
+
+    function openCart(){ $("cartModal").classList.add("open"); }
+    function closeCart(){ $("cartModal").classList.remove("open"); }
+
+    // ---------- SHOP LOGIC ----------
+    function currentBottlePrice(){
+      const capOpt = $("capacity").selectedOptions[0];
+      const mult = Number(capOpt.dataset.mult || 1);
+      return Math.round(BASE_PRICE_BOTTLE * mult);
+    }
+
+    function updatePriceDisplay(){
+      const p = currentBottlePrice();
+      $("priceNow").textContent = `$${p}`;
+      $("priceWas").textContent = `$${Math.round(p / (1 - EARLY_EXPLORER_DISCOUNT))}`;
+    }
+
+    function addBottleToCart(){
+      const cap = $("capacity").value;
+      const color = $("color").value;
+      const bundleOpt = $("bundle").selectedOptions[0];
+      const bundleName = bundleOpt.textContent.trim();
+      const extraFilters = Number(bundleOpt.dataset.extra || 0);
+      const qty = Math.max(1, Number($("qty").value || 1));
+      const unitPrice = currentBottlePrice();
+
+      addItem({
+        key: `bottle-${cap}-${color}-${bundleOpt.value}`,
+        type: "bottle",
+        title: `Aquara Bottle (${cap})`,
+        meta: `${color} • ${bundleName}`,
+        unitPrice,
+        qty
+      });
+
+      if(extraFilters > 0){
+        addItem({
+          key: `filter-extra-${cap}-${color}-${bundleOpt.value}`,
+          type: "filter",
+          title: `Replacement Filter Cartridge`,
+          meta: `Bundle add-on (${extraFilters} included)`,
+          unitPrice: FILTER_PRICE,
+          qty: extraFilters * qty
+        });
+      }
+
+      // If subscription checked, add a subscription placeholder line
+      if($("subscribe").checked){
+        const plan = $("subPlan").value;
+        addItem({
+          key: `sub-${plan}`,
+          type: "subscription",
+          title: `Filter Subscription (${plan.toUpperCase()})`,
+          meta: `Auto-ship plan (demo item)`,
+          unitPrice: 0,
+          qty: 1
+        });
+      }
+
+      openCart();
+    }
+
+    function addOneFilter(){
+      addItem({
+        key: `filter-single`,
+        type: "filter",
+        title: `Replacement Filter Cartridge`,
+        meta: `Single unit`,
+        unitPrice: FILTER_PRICE,
+        qty: 1
+      });
+      openCart();
+    }
+
+    function quickAddSub(plan){
+      addItem({
+        key: `sub-${plan}`,
+        type: "subscription",
+        title: `Filter Subscription (${plan.toUpperCase()})`,
+        meta: `Auto-ship plan (demo item)`,
+        unitPrice: 0,
+        qty: 1
+      });
+      openCart();
+    }
+
+    function demoCheckout(){
+      alert("Demo checkout only ✅\n\nIn a real launch, connect to Shopify / Stripe for payments, tax, shipping rules and order confirmation emails.");
+      closeCart();
+    }
+
+    // Email join demo
+    function join(){
+      const v = $("email").value.trim();
+      if(!v || !v.includes("@")){
+        $("joinMsg").textContent = "Please enter a valid email.";
+        $("joinMsg").style.color = "var(--warn)";
+        return;
+      }
+      $("joinMsg").textContent = "Thanks! You’re in the Explorer Club (demo).";
+      $("joinMsg").style.color = "var(--ok)";
+      $("email").value = "";
+    }
+
+    // Search demo
+    function demoSearch(){
+      alert("Search is a demo.\nTip: Add a real search with Shopify storefront API later.");
+    }
+
+    // Close modal on background click
+    $("cartModal").addEventListener("click", (e) => {
+      if(e.target.id === "cartModal") closeCart();
+    });
+
+    // ---------- STORAGE ----------
+    function saveCart(){
+      try{ localStorage.setItem("aquara_cart", JSON.stringify(cart)); }catch(e){}
+    }
+    function loadCart(){
+      try{
+        const raw = localStorage.getItem("aquara_cart");
+        if(raw) cart = JSON.parse(raw) || [];
+      }catch(e){ cart = []; }
+    }
+
+    // ---------- INIT ----------
+    function init(){
+      setYear();
+      tickCountdown();
+      updatePriceDisplay();
+      loadCart();
+      renderCart();
+      updateHeaderCartBadge();
+
+      $("capacity").addEventListener("change", updatePriceDisplay);
+      $("addToCartBtn").addEventListener("click", addBottleToCart);
+      $("buyNowBtn").addEventListener("click", () => { addBottleToCart(); demoCheckout(); });
+      $("addFilterBtn").addEventListener("click", addOneFilter);
+      $("cartBtn").addEventListener("click", openCart);
+      $("searchBtn").addEventListener("click", demoSearch);
+      $("joinBtn").addEventListener("click", join);
+    }
+
+    init();
+  </script>
+</body>
+</html>
